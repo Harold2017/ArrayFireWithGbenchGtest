@@ -33,28 +33,28 @@ if(OPENMP_FOUND)
 endif()
 
 # common
-add_library(arryfire_gbench
+add_library(arryfire_common
         main.cpp)
-add_library(arryfire_gtest
-        main.cpp)
+target_link_libraries(arryfire_common ArrayFire::af)
 
-# GTest
-target_link_libraries(arryfire_gbench ArrayFire::af)
-target_link_libraries(arryfire_gtest ${GTEST_LIBRARIES} pthread)
+function(addSource name)
+    add_executable(${name} src/${name}.cpp)
+    target_link_libraries(${name} arryfire_common)
+endfunction()
 
 # Google Benchmark
-target_link_libraries(arryfire_gtest ArrayFire::af)
-target_link_libraries(arryfire_gbench ${benchmark_LIBRARIES} pthread)
-
 function(addBenchmark name)
-    add_executable(${name} src/${name}.cpp)
-    target_link_libraries(${name} arryfire_gbench)
+    add_executable(${name} benchmarks/${name}.cpp)
+    target_link_libraries(${name} arryfire_common ${benchmark_LIBRARIES} pthread)
 endfunction()
 
+# GTest
 function(addTest name)
     add_executable(${name} tests/${name}.cpp)
-    target_link_libraries(${name} arryfire_gtest)
+    target_link_libraries(${name} arryfire_common ${GTEST_LIBRARIES} pthread)
 endfunction()
+
+addSource(fft)
 
 addBenchmark(gbench_test)
 
