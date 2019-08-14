@@ -7,6 +7,17 @@
 ├── CMakeLists.txt
 ├── cmake_modules
 │   └── FindGoogleBenchmark.cmake
+├── docker
+│   ├── cuda10_1_ubuntu18_04
+│   │   ├── CMakeLists.txt
+│   │   ├── Dockerfile
+│   │   ├── fft.cpp
+│   │   ├── result.md
+│   │   └── test_backend.cpp
+│   ├── cuda8.0_ubuntu16.04
+│   │   └── Dockerfile
+│   └── cuda9.2_ubuntu18.04
+│       └── Dockerfile
 ├── install_google_benchmark_and_test.sh
 ├── main.cpp
 ├── README.md
