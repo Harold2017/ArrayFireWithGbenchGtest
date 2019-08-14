@@ -21,5 +21,6 @@ Please use `install_google_benchmark_and_test.sh` for `GBench` and `GTest` insta
 
 Additions:
 
+- `docker` folder includes different versions of `ArrayFire DockerFile`
 - useful header `gtest_cout.h` for printing in `GTest`
 - useful macro for calculating device memory usage in `gbench_test.cpp`'s `profiler`
