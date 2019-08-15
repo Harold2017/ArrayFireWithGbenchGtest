@@ -59,3 +59,11 @@ addSource(fft)
 addBenchmark(gbench_test)
 
 addTest(gtest_test)
+
+# common
+add_executable(io_sample
+        src/io_sample.cpp
+        src/utils/utils.cpp
+        )
+target_link_libraries(io_sample arryfire_common)
+
